@@ -1,6 +1,7 @@
 const express = require('express')
 const path = require('path');
 const { Pool } = require('pg');
+const { render } = require('ejs');
 const PORT = process.env.PORT || 5000
 var pool;
 pool = new Pool({
@@ -58,9 +59,30 @@ app.get('/editData',(req,res)=>{
   pool.query(getPersonQuery, (error, results) =>{
     if (error)
       res.end(error);
+    
     var results = {'rows': results.rows}
     res.render('pages/editData',results)
   })
   
 })
+app.post('/deletePerson',(req,res)=>{
+  var id = req.body.idToDelete;
+  console.log(id);
+
+  var deletePerson = `DELETE FROM Person Where uid=${id}`;
+  pool.query(deletePerson, (error, results)=>{
+    if(error){
+      res.end(error);
+      console.log("DELETE ERROR");
+      console.log(deletePerson);
+    }
+    else
+     console.log("User Succesfully deleted");
+  })
+  res.redirect('/editData');
+}
+
+)
+
+
 app.listen(PORT, () => console.log(`Listening on ${ PORT }`))
