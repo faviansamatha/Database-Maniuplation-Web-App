@@ -41,7 +41,7 @@ app.get('/database', (req,res)=>{
   // var data = {results: [2,3,4,5,6]};
   // res.render('pages/db',data)
   // var data = {results: [2,3,4,5,6]};
-  var getUsersQuery = `SELECT * FROM usr`;
+  var getUsersQuery = `SELECT * FROM Person`;
   pool.query(getUsersQuery, (error, results) =>{
     if (error)
       res.end(error);
@@ -51,6 +51,16 @@ app.get('/database', (req,res)=>{
   
   )
 
+  
+})
+app.get('/editData',(req,res)=>{
+  var getPersonQuery = `SELECT * FROM Person`;
+  pool.query(getPersonQuery, (error, results) =>{
+    if (error)
+      res.end(error);
+    var results = {'rows': results.rows}
+    res.render('pages/editData',results)
+  })
   
 })
 app.listen(PORT, () => console.log(`Listening on ${ PORT }`))
