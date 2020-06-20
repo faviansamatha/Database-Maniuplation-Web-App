@@ -1,0 +1,101 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-align: center;
+    color: black;
+    font-size: 18px;
+    font-family: 'Roboto Mono', monospace;
+}
+html{
+    font-family: 'Roboto Mono', monospace;
+    font-size: 14px;
+    color: #B0B0B0;
+    background-color: #080808;
+    justify-content: middle;
+}
+
+body{
+    background-color: #080808;
+}
+
+ul{
+    list-style: none;   
+}
+hr{
+    
+    background-color: #080808;
+    padding: 12px;
+    color: #080808;
+    border-color: #080808;
+}
+.divider{
+    background-color: #080808;
+    padding: 3px;
+    color: #080808;
+    border-color: #080808;
+}
+.divider-medium{
+    background-color: #080808;
+    padding: 6px;
+    color: #080808;
+    border-color: #080808;
+}
+
+.header-title{
+    font-size: 50px;
+    text-align: center;
+    color: #B0B0B0;
+}
+header {
+    justify-content: center;
+    text-align: center;
+    margin: auto auto;
+    background-color: black;
+}
+
+/*-------Nav Bar---------*/
+.navbar{
+    margin: 0px;
+    padding: 0px;
+}
+.navbar ul{
+    margin: 0px auto;
+}
+.navbar ul li{
+    border-right-style: solid;
+    border-color: darkgrey;
+}
+.navbar ul:first-child{
+    border-left-style: solid;
+    border-color: darkgrey;
+}
+.nav-link{
+    color: #B0B0B0;
+    width: 200px;
+}
+.dropdown-navbar{
+    background-color: #343a40;
+}
+.dropdown-item{
+    color: #B0B0B0;
+}
+.nav-color{
+    background-color: #343a40;
+}
+/*--------Containers for Content---------*/
+
+.content{
+    background-color: #808080;
+    justify-content: center;
+    text-align: center;
+    height: auto;
+    margin: auto auto auto auto;
+    padding-bottom: 20px;
+    color: black;
+}
+.content p{
+    max-width: 900px;
+    max-height: 600px;
+    margin: auto auto auto auto;
+}
