@@ -5,7 +5,8 @@ const { render } = require('ejs');
 const PORT = process.env.PORT || 5000
 var pool;
 pool = new Pool({
-  connectionString: process.env.DATABASE_URL
+  connectionString: 
+  process.env.DATABASE_URL
   // 'postgres://postgres:Ianmicro32@localhost/users'
 })
 
@@ -31,7 +32,9 @@ app.get('/database', (req,res)=>{
   pool.query(getUsersQuery, (error, results) =>{
     if (error)
       res.end(error);
-    var results = {'rows':results.rows}
+
+    var rows = results.rows;
+    var results = {'rows': rows}
     res.render('pages/viewData',results);
   }
   
@@ -250,3 +253,118 @@ app.get('/userData/:id', (req,res)=>{
 })
 app.listen(PORT, () => console.log(`Listening on ${ PORT }`))
 
+app.post('/filterTable',(req,res)=>{
+
+
+
+  var getUsersQuery = `SELECT * FROM Person ORDER BY uid`;
+  var uid = req.body.id;
+  var fname = req.body.fName;
+  var lname = req.body.lName;
+  var minsize = req.body.minsize;
+  var maxsize = req.body.maxsize;
+  var minheight = req.body.minheight;
+  var maxheight = req.body.maxheight;
+  var colour = req.body.colour;
+  var pet = req.body.pet;
+  var type = req.body.type;
+  var minage = req.body.minage;
+  var maxage = req.body.maxage;
+  console.log(fname);
+  pool.query(getUsersQuery, (error, results) =>{
+    if (error)
+      res.end(error);
+    
+    
+    var rows  = results.rows;
+    if(fname != "" && fname !== undefined){
+      rows = rows.filter((row)=>{
+        return row.fname.includes(fname);
+      }
+      )
+    }
+    if(uid != "" && uid!== undefined){
+      rows = rows.filter((row)=>{
+        return row.uid == uid;
+      })
+
+    }
+    if(lname != "" && lname!== undefined){
+      rows = rows.filter((row)=>{
+        return row.lname.includes(lname);
+      })
+
+    }
+    if(minsize != "" && minsize!== undefined){
+      rows = rows.filter((row)=>{
+        return row.size >= minsize;
+
+      })
+
+    }
+    if(maxsize != "" && maxsize!== undefined){
+      rows = rows.filter((row)=>{
+        return row.size <= minsize;
+
+      })
+
+    }
+    if(minheight != "" && minheight!== undefined){
+      rows = rows.filter((row)=>{
+        return row.size >= minheight;
+
+      })
+
+      
+    }
+    if(maxheight != "" && maxheight!== undefined){
+      rows = rows.filter((row)=>{
+        return row.size <= maxheight;
+
+      })
+
+    }
+    if(colour != "" && colour!== undefined){
+      rows = rows.filter((row)=>{
+        return row.colour.includes(colour);
+      })
+
+    }
+    if(pet != "" && pet!== undefined){
+      rows = rows.filter((row)=>{
+        return row.pet.includes(pet);
+      })
+
+    }
+    if(type != "" && type!== undefined){
+      rows = rows.filter((row)=>{
+        return row.type.includes(type);
+      })
+
+    }
+    if(minage != "" && minage!== undefined){
+      rows = rows.filter((row)=>{
+        return row.age >= minage;
+
+      })
+
+      
+    }
+    if(maxage != "" && maxage!== undefined){
+      rows = rows.filter((row)=>{
+        return row.age <= maxage;
+
+      })
+
+    }
+    
+    
+    var results = {'rows': rows}
+
+
+    res.render('pages/viewData',results);
+  }
+  
+  )
+
+})

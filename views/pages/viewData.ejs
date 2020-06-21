@@ -33,30 +33,75 @@
         </ul>
     </nav>
     <div class = "content">
-        
+        <h1 style="font-size:25px;">Filters</h1>
+        <form class="" id ="filter" action= "/filterTable" method="post">
+            <input type = "number" name = "id" value = "" placeholder = "User ID" min = "0"> <br>
+            <input type = "text" name = "fName" value = "" placeholder = "First Name"> 
+            <input type = "text" name = "lName" value = "" placeholder = "Last Name"> 
+            <input type = "number" step = "1" name ="minage" placeholder = "Min Age" min = "0"> 
+            <input type = "number" step = "1" name ="maxage" placeholder = "Max Age" min = "0"> <br>
+            <input type = "number" step = "1" name ="minsize" placeholder = "Min Size (lb)" min = "0" max="300" > 
+            <input type = "number" step = "1" name ="maxsize" placeholder = "Max Size (lb)" min = "0" max="300" > 
+            <input type = "number" step = "1" name ="minheight" placeholder = "Min Height (m)" min = "0" max="300"> 
+            <input type = "number" step = "1" name ="maxheight" placeholder = "Max Height (m)" min = "0" max="300"> <br>
+            <select name = "colour">
+                <option value="" disabled selected>Favourite Colour</option>
+                <option value ="red">Red</option>
+                <option value ="blue">Blue</option>
+                <option value ="green">Green</option>
+                <option value ="yellow">Yellow</option>
+                <option value ="purple">Purple</option>
+                <option value ="orange">Orange</option>
+            </select>
+
+            <select name = "pet" >
+                <option value="" selected>Dog or Cat Person</option>
+                <option value ="dog">Dog</option>
+                <option value ="cat">Cat</option>
+            </select>
+
+            <select name = "type">
+                <option value="" selected>Select Type</option>
+                <option value ="manager">Manager</option>
+                <option value ="employee">Employee</option>
+                <option value ="intern">Intern</option>
+            </select>
+            <br>
+            <input type = "submit" name = "sub" value= "Filter">
+        </form>
     </div>
+    <div class="content">
+
+        <form class="" action= "/database" method="get">
+            <input type = "submit" name = "sub" value= "Reset Filters">
+        </form>
+    </div>
+
+
+
     <div class = "content" id = "tableContainer">
+        <h1>Results</h1>
         <table>
             <tr>
                 <th>User ID</th>
                 <th>Full Name</th>
                 <th>Age</th>
-                <!-- <th>Size</th>
+                <th>Size</th>
                 <th>Height</th>
                 <th>Favourite Colour</th>
-                <th>Dog or Cat?</th> -->
+                <th>Dog or Cat?</th>
                 <th>Type</th>
             </tr>
             <% rows.forEach(function(r) { %>
                 <tr>
                     <td><a href="/userData/<%=r.uid%>" ><%= r.uid%></a></td>
-                    <td><%=r.fname%><%=r.lname%></td>
+                    <td><%=r.fname.trim()%> <%=r.lname.trim()%></td>
                      <td><%= r.age%></td>
-                    <!--<td><%= r.size%></td>
+                    <td><%= r.size%></td>
                     <td><%= r.height%></td>
-                    <td><%= r.colour%></td>
-                    <td><%= r.pet%></td> -->
-                    <td><%= r.type%></td>
+                    <td><%= r.colour.trim()%></td>
+                    <td><%= r.pet.trim()%></td>
+                    <td><%= r.type.trim()%></td>
                 </tr>
             <% }); %>
         </table>

@@ -138,6 +138,9 @@ input, textarea{
     padding: 2px;
     margin: 30px;
 }
+input[type=submit]{
+    background-color: #b94d0e;
+}
 
 textarea{
     width: 500px;
