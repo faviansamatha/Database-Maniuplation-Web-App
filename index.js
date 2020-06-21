@@ -86,14 +86,14 @@ app.post('/deletePerson',(req,res)=>{
 app.post('/updatePerson',(req,res)=>{
 
   var uid = req.body.id;
-  var fname = req.body.fName;
-  var lname = req.body.lName;
+  var fname = req.body.fName.replace(/[']/g,"''");
+  var lname = req.body.lName.replace(/[']/g,"''");
   var size = req.body.size;
   var height = req.body.height;
   var colour = req.body.colour;
   var pet = req.body.pet;
   var type = req.body.type;
-  var bio = req.body.bio;
+  var bio = req.body.bio.replace(/[']/g,"''");
   var age = req.body.age;
 
 
@@ -215,7 +215,7 @@ app.post('/addPerson',(req,res)=>{
   var pet = req.body.pet;
   var type = req.body.type;
   var age = req.body.age;
-  var bio = req.body.bio;
+  var bio = req.body.bio.replace(/[']/g,"''");
   var bool = false;
 
   var addPerson = `INSERT INTO Person VALUES (${uid},${age},'${fname}','${lname}',
