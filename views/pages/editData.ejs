@@ -73,7 +73,7 @@
         <h1>Edit User</h1>
         <form class="" id ="editUser" action= "/updatePerson" method="post">
             <select name = "id" required>
-                <option value="" disabled selected>Person's ID</option>
+                <option value="" disabled selected>User ID</option>
                 <% rows.forEach(function(r){%>
                 <option value= "<%= r.uid %>"> <%= r.uid %></option>
                 <%});%>
@@ -115,7 +115,7 @@
         <h1>Delete User</h1>
         <form class="" action= "/deletePerson" method="post">
             <select name = "idToDelete" required>
-                <option value="" disabled selected>Person's ID</option>
+                <option value="" disabled selected>User ID</option>
                 <% rows.forEach(function(r){%>
                 <option value= "<%= r.uid %>"><%=r.uid%>: <%=r.fname%><%=r.lname%></option>
                 <%});%>
