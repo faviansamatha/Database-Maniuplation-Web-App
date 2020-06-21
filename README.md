@@ -14,28 +14,28 @@
 <p>Welcome to the beta version of our employee management system. Please take a look around the website.
     Feel free to add, edit, or delete any of the users!<br>
 
-    Here is a list of features and how to use each page:<br>
-    <emp style="font-size:30px;">1) Edit Database: </emp><br>
-    - We can add users. ALL FIELDS ARE REQUIRED (there are validations on a field. Try adding a user with an incomplete field) <br>
-    - The add user form will fail if the id of the new user already exists. You will be redirected to an ERROR page.<br>
-    - You will also be redirected to a success page if you succesfully added someone. <br>
-    - We can edit users. The dropdown User ID is a list of all existing ids. <br>
-    - In edit users, only the Person's ID is required! Any null or blank field will not alter the user. That is, only the fields that aren't blank will be updated
-    - We can delete a user if needed. Just select the Person's ID.
-    - I used RegEx to parse through the string to make sure there aren't any single quotes in the textarea.
-    <br>
-    <emp style="font-size:30px;"> 2) View Our Team! Page:</emp> <br>
-    - We represent people's size, height, favourite colour, and group them by their employment type. Click on their names for more info about them! This is the only way to see their bio! <br>
-    <emp style="font-size:30px;">3) View Database Page:</emp>  <br>
-    - Here we can see the complete table from the database. Click on the "user id" field to see their bios just like the previous page!<br>
-    - We can also filter the table if the list gets too long. The User ID field is an EXACT MATCH. Everything else is an "include" statements.
-    They are all joined by an "AND" condition. So if I searched for Bob in the first name, and do Min age = 5. Then the result would be people
-    whose first name contains Bob (so Bobby would show up) with an age greater than or equal to 5. 
-    <br>
-    <br>
-    Coded by: Favian (Ian) Samatha
-    <br>
-    <br>
+Here is a list of features and how to use each page:<br>
+<emp style="font-size:30px;">1) Edit Database: </emp><br>
+- We can add users. ALL FIELDS ARE REQUIRED (there are validations on a field. Try adding a user with an incomplete field) <br>
+- The add user form will fail if the id of the new user already exists. You will be redirected to an ERROR page.<br>
+- You will also be redirected to a success page if you succesfully added someone. <br>
+- We can edit users. The dropdown User ID is a list of all existing ids. <br>
+- In edit users, only the Person's ID is required! Any null or blank field will not alter the user. That is, only the fields that aren't blank will be updated
+- We can delete a user if needed. Just select the Person's ID.
+- I used RegEx to parse through the string to make sure there aren't any single quotes in the textarea.
+<br>
+<emp style="font-size:30px;"> 2) View Our Team! Page:</emp> <br>
+- We represent people's size, height, favourite colour, and group them by their employment type. Click on their names for more info about them! This is the only way to see their bio! <br>
+<emp style="font-size:30px;">3) View Database Page:</emp>  <br>
+- Here we can see the complete table from the database. Click on the "user id" field to see their bios just like the previous page!<br>
+- We can also filter the table if the list gets too long. The User ID field is an EXACT MATCH. Everything else is an "include" statements.
+They are all joined by an "AND" condition. So if I searched for Bob in the first name, and do Min age = 5. Then the result would be people
+whose first name contains Bob (so Bobby would show up) with an age greater than or equal to 5. 
+<br>
+<br>
+Coded by: Favian (Ian) Samatha
+<br>
+<br>
 
 
 
