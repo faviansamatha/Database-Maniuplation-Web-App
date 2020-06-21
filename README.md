@@ -22,6 +22,7 @@
     - We can edit users. The dropdown User ID is a list of all existing ids. <br>
     - In edit users, only the Person's ID is required! Any null or blank field will not alter the user. That is, only the fields that aren't blank will be updated
     - We can delete a user if needed. Just select the Person's ID.
+    - I used RegEx to parse through the string to make sure there aren't any single quotes in the textarea.
     <br>
     <emp style="font-size:30px;"> 2) View Our Team! Page:</emp> <br>
     - We represent people's size, height, favourite colour, and group them by their employment type. Click on their names for more info about them! This is the only way to see their bio! <br>
