@@ -5,7 +5,8 @@ const { render } = require('ejs');
 const PORT = process.env.PORT || 5000
 var pool;
 pool = new Pool({
-  connectionString: 'postgres://postgres:Ianmicro32@localhost/users'
+  connectionString: process.env.DATABASE_URL
+  // 'postgres://postgres:Ianmicro32@localhost/users'
 })
 
 // const { Pool } = require('pg');
@@ -25,23 +26,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs')
 app.get('/', (req, res) => res.render('pages/index'))
-  // .get('/db', async (req, res) => {
-  //   try {
-  //     const client = await pool.connect();
-  //     const result = await client.query('SELECT * FROM test_table');
-  //     const results = { 'results': (result) ? result.rows : null};
-  //     res.render('pages/db', results );
-  //     client.release();
-  //   } catch (err) {
-  //     console.error(err);
-  //     res.send("Error " + err);
-  //   }
-  // })
 app.get('/database', (req,res)=>{
-
-  // var data = {results: [2,3,4,5,6]};
-  // res.render('pages/db',data)
-  // var data = {results: [2,3,4,5,6]};
   var getUsersQuery = `SELECT * FROM Person ORDER BY uid`;
   pool.query(getUsersQuery, (error, results) =>{
     if (error)
@@ -91,9 +76,7 @@ app.post('/deletePerson',(req,res)=>{
      console.log("User Succesfully deleted");
   })
   res.render('pages/success');
-}
-
-)
+})
 
 
 
@@ -107,6 +90,7 @@ app.post('/updatePerson',(req,res)=>{
   var colour = req.body.colour;
   var pet = req.body.pet;
   var type = req.body.type;
+  var bio = req.body.bio;
   var age = req.body.age;
 
 
@@ -199,6 +183,17 @@ app.post('/updatePerson',(req,res)=>{
     } 
     )
   }
+  if(bio != "" && bio !== undefined)
+  {
+    var update = `UPDATE person SET bio='${bio}' WHERE uid=${uid}`;
+    pool.query(update,(error,results) =>{
+      if(error){
+        res.end(error);
+        console.log("UPDATE ERROR for bio")
+      }
+    } 
+    )
+  }
   
   
   
@@ -217,10 +212,11 @@ app.post('/addPerson',(req,res)=>{
   var pet = req.body.pet;
   var type = req.body.type;
   var age = req.body.age;
+  var bio = req.body.bio;
   var bool = false;
 
   var addPerson = `INSERT INTO Person VALUES (${uid},${age},'${fname}','${lname}',
-    ${height},${size},'${colour}','${pet}','${type}')`;
+    ${height},${size},'${colour}','${pet}','${type}','${bio}')`;
 
   pool.query(addPerson, (error,results)=>{
 
@@ -235,11 +231,22 @@ app.post('/addPerson',(req,res)=>{
       }
   })
   
-}
+})
 
+app.get('/userData/:id', (req,res)=>{
 
-)
+  var id = req.params.id;
+  var getUser = `SELECT * FROM person WHERE uid=${id}`;
 
+  pool.query(getUser,(error,results)=>{
+    if(error)
+      res.end(error);
+    var results = {'data':results.rows[0]};
+    res.render('pages/userData',results);
+  }
+  )
+  
 
+})
 app.listen(PORT, () => console.log(`Listening on ${ PORT }`))
 

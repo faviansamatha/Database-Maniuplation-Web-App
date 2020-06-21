@@ -130,7 +130,7 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-input {
+input, textarea{
     border-color: rgba(112, 83, 126, 0.397);
     width: 300px;
     border-width: 3px;
@@ -139,9 +139,10 @@ input {
     margin: 30px;
 }
 
-.textBox{
-    width: 600px;
-    height: 600px;
+textarea{
+    width: 500px;
+    height: 200px;
+    text-align: left;
 }
 
 select{
@@ -172,3 +173,7 @@ table, th, td{
 a:link{
     color:lightgray;
 }
+
+a:visited {
+    color: lightgray;
+  }

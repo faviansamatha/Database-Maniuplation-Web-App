@@ -34,7 +34,7 @@
     </nav>
     <div class="content">
         <h1>Add User</h1>
-        <form class="" action= "/addPerson" method="post">
+        <form class="" id = "addUser" action= "/addPerson" method="post">
             <input type = "number" name = "id" value = "" placeholder = "User ID" min = "0" required> 
             <input type = "number" step = "1" name ="age" placeholder = "Age" min = "0" required> <br> 
             <input type = "text" name = "fName" value = "" placeholder = "First Name" required> 
@@ -64,12 +64,14 @@
                 <option value ="intern">Intern</option>
             </select>
             <br>
+            <textarea form = "addUser" name = "bio" placeholder="Short Bio About User" required></textarea>
+            <br>
             <input type = "submit" name = "sub" value= "Add-User">
         </form>
     </div>
     <div class="content">
         <h1>Edit User</h1>
-        <form class="" action= "/updatePerson" method="post">
+        <form class="" id ="editUser" action= "/updatePerson" method="post">
             <select name = "id" required>
                 <option value="" disabled selected>Person's ID</option>
                 <% rows.forEach(function(r){%>
@@ -103,6 +105,8 @@
                 <option value ="employee">Employee</option>
                 <option value ="intern">Intern</option>
             </select>
+            <br>
+            <textarea form = "editUser" name = "bio" placeholder="Short Bio About User" required></textarea>
             <br>
             <input type = "submit" name = "sub" value= "Edit-User">
         </form>

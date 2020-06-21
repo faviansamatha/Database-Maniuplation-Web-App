@@ -6,7 +6,7 @@
 
   <title>CMPT 276 Assignment 2</title>
 
-  <link rel="stylesheet" href="./stylesheets/a2styles.css">
+  <link rel="stylesheet" href="/stylesheets/a2styles.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" >
 
 </head>
@@ -19,26 +19,41 @@
     <nav class="navbar sticky-top navbar-light nav-color">
         <ul class="nav nav-pills nav-fill">
             <li class="nav-item">
-                <a class="nav-link" href="edit">Home</a>
+                <a class="nav-link" href="/a2.html">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">Edit Database</a>
+                <a class="nav-link" href="/editData" tabindex="-1" aria-disabled="true">Edit Database</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">View Our Team!</a>
+                <a class="nav-link" href="/viewTeam" tabindex="-1" aria-disabled="true">View Our Team!</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">View Database</a>
+                <a class="nav-link" href="/database" tabindex="-1" aria-disabled="true">View Database</a>
             </li>
         </ul>
     </nav>
-    <div class="content">
-        <p>Color Black</p>
+    
+    <div class = "content">
+        <h1><%=data.fname%><%=data.lname%></h1>
+        <ul>
+            <li>ID: <%=data.uid%> </li>
+            <li>First Name: <%=data.fname%></li>
+            <li>Last Name: <%=data.lname%></li>
+            <li>Height: <%=data.height%></li>
+            <li>Size: <%=data.size%></li>
+            <li>Favourite Color: <%=data.colour%></li>
+            <li>Cat or Dog: <%=data.pet%></li>
+            <li>Type: <%=data.type%></li>
+            
+        </ul>
+        <h1 style="font-size:20px;">BIO</h1>
+        <p><%=data.bio%></p>
     </div>
 
 
 
 
-  <script src="js/scripts.js"></script>
+
+
 </body>
 </html>
