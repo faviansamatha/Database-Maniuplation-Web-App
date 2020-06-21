@@ -25,7 +25,7 @@
                 <a class="nav-link" href="/editData" tabindex="-1" aria-disabled="true">Edit Database</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">View Our Team!</a>
+                <a class="nav-link" href="/viewTeam" tabindex="-1" aria-disabled="true">View Our Team!</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/database" tabindex="-1" aria-disabled="true">View Database</a>
@@ -35,12 +35,12 @@
     <div class="content">
         <h1>Add User</h1>
         <form class="" action= "/addPerson" method="post">
-            <input type = "number" name = "id" value = "" placeholder = "User ID" min = "0" required> <br>
-            <input type = "text" name = "fName" value = "" placeholder = "First Name" required> <br>
+            <input type = "number" name = "id" value = "" placeholder = "User ID" min = "0" required> 
+            <input type = "number" step = "1" name ="age" placeholder = "Age" min = "0" required> <br> 
+            <input type = "text" name = "fName" value = "" placeholder = "First Name" required> 
             <input type = "text" name = "lName" value = "" placeholder = "Last Name" required> <br>
-            <input type = "number" step = "1" name ="age" placeholder = "age" min = "0" required> <br> 
-            <input type = "number" step = "1" name ="weight" placeholder = "Weight" min = "0" required> <br> 
-            <input type = "number" step = "1" name ="height" placeholder = "Height" min = "0" required> <br> 
+            <input type = "number" step = "1" name ="size" placeholder = "Size (lb)" min = "0" max="300" required> 
+            <input type = "number" step = "1" name ="height" placeholder = "Height (m)" min = "0" max="300" required> <br> 
             <select name = "colour" required>
                 <option value="" disabled selected>Favourite Colour</option>
                 <option value ="red">Red</option>
@@ -50,15 +50,15 @@
                 <option value ="purple">Purple</option>
                 <option value ="orange">Orange</option>
             </select>
-            <br>
+            
             <select name = "pet" required >
                 <option value="" disabled selected>Dog or Cat Person</option>
                 <option value ="dog">Dog</option>
                 <option value ="cat">Cat</option>
             </select>
             <br>
-            <select name = "Position" required >
-                <option value="" disabled selected>Select Position</option>
+            <select name = "type" required >
+                <option value="" disabled selected>Select Type</option>
                 <option value ="manager">Manager</option>
                 <option value ="employee">Employee</option>
                 <option value ="intern">Intern</option>
@@ -70,18 +70,17 @@
     <div class="content">
         <h1>Edit User</h1>
         <form class="" action= "/updatePerson" method="post">
-            <!-- <input type = "User ID" name = "id" value = "" placeholder = "User ID"> <br> -->
             <select name = "id" required>
                 <option value="" disabled selected>Person's ID</option>
                 <% rows.forEach(function(r){%>
                 <option value= "<%= r.uid %>"> <%= r.uid %></option>
                 <%});%>
             </select><br>
-            <input type = "text" name = "fName" value = "" placeholder = "First Name"> <br>
+            <input type = "text" name = "fName" value = "" placeholder = "First Name"> 
             <input type = "text" name = "lName" value = "" placeholder = "Last Name"> <br>
-            <input type = "number" step = "1" name ="age" placeholder = "age" min = "0"> <br> 
-            <input type = "number" step = "1" name ="weight" placeholder = "Weight"> <br> 
-            <input type = "number" step = "1" name ="height" placeholder = "Height"> <br> 
+            <input type = "number" step = "1" name ="age" placeholder = "Age" min = "0"> 
+            <input type = "number" step = "1" name ="size" placeholder = "Size (lb)" min = "0" max="300" > <br> 
+            <input type = "number" step = "1" name ="height" placeholder = "Height (m)" min = "0" max="300"> 
             <select name = "colour">
                 <option value="" disabled selected>Favourite Colour</option>
                 <option value ="red">Red</option>
@@ -97,9 +96,9 @@
                 <option value ="dog">Dog</option>
                 <option value ="cat">Cat</option>
             </select>
-            <br>
-            <select name = "position">
-                <option value="" selected>Select Position</option>
+
+            <select name = "type">
+                <option value="" selected>Select Type</option>
                 <option value ="manager">Manager</option>
                 <option value ="employee">Employee</option>
                 <option value ="intern">Intern</option>
@@ -114,7 +113,7 @@
             <select name = "idToDelete" required>
                 <option value="" disabled selected>Person's ID</option>
                 <% rows.forEach(function(r){%>
-                <option value= "<%= r.uid %>"><%=r.uid%>(<%=r.fname%><%=r.lname%>)</option>
+                <option value= "<%= r.uid %>"><%=r.uid%>: <%=r.fname%><%=r.lname%></option>
                 <%});%>
             </select><br>
             <input type = "submit" name = "sub" value= "Delete-User">

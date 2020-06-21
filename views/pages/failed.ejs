@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
 
-  <title>CMPT 276 Assignment 2</title>
+  <title>The HTML5 Herald</title>
 
   <link rel="stylesheet" href="./stylesheets/a2styles.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" >
@@ -19,7 +19,7 @@
     <nav class="navbar sticky-top navbar-light nav-color">
         <ul class="nav nav-pills nav-fill">
             <li class="nav-item">
-                <a class="nav-link" href="/a2.html">Home</a>
+                <a class="nav-link" href="edit">Home</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/editData" tabindex="-1" aria-disabled="true">Edit Database</a>
@@ -32,41 +32,14 @@
             </li>
         </ul>
     </nav>
-    <div class = "content">
-        
-    </div>
-    <div class = "content" id = "tableContainer">
-        <table>
-            <tr>
-                <th>User ID</th>
-                <th>Full Name</th>
-                <th>Age</th>
-                <!-- <th>Size</th>
-                <th>Height</th>
-                <th>Favourite Colour</th>
-                <th>Dog or Cat?</th> -->
-                <th>Type</th>
-            </tr>
-            <% rows.forEach(function(r) { %>
-                <tr>
-                    <td><a href="/userData/<%=r.uid%>" ><%= r.uid%></a></td>
-                    <td><%=r.fname%><%=r.lname%></td>
-                     <td><%= r.age%></td>
-                    <!--<td><%= r.size%></td>
-                    <td><%= r.height%></td>
-                    <td><%= r.colour%></td>
-                    <td><%= r.pet%></td> -->
-                    <td><%= r.type%></td>
-                </tr>
-            <% }); %>
-        </table>
-
+    <div class="content">
+        <h1> Your Changes to the Database failed </h1><br>
+        <h1>If you are adding a user, please make sure that their ID is not taken by someone else</h1>
     </div>
 
 
 
 
-
-
+  <script src="js/scripts.js"></script>
 </body>
 </html>

@@ -74,12 +74,7 @@ header {
     color: #B0B0B0;
     width: 200px;
 }
-.dropdown-navbar{
-    background-color: #343a40;
-}
-.dropdown-item{
-    color: #B0B0B0;
-}
+
 .nav-color{
     background-color: #343a40;
 }
@@ -98,4 +93,82 @@ header {
     max-width: 900px;
     max-height: 600px;
     margin: auto auto auto auto;
+}
+
+/*----------To view people as rectangles ---------*/
+svg{
+    transform: scaleY(-1);
+    padding-top: 5px;
+  }
+
+.rectangles{
+   display: inline-block;
+   height: 320px;
+   width: 300px;
+   border-color: Yellow;
+   border-width: 20px;
+   text-align: center;
+}
+
+.rectangles i {
+    position: absolute;
+    padding: 0px;
+    margin: 0px;
+    border: 0px;
+    
+    padding-left: 40px;
+    z-index: 2;
+    color: lightgrey;
+    
+
+}
+
+
+/*----------Change inputs --------*/
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input {
+    border-color: rgba(112, 83, 126, 0.397);
+    width: 300px;
+    border-width: 3px;
+    border-radius: 20px;
+    padding: 2px;
+    margin: 30px;
+}
+
+.textBox{
+    width: 600px;
+    height: 600px;
+}
+
+select{
+    width: 300px;
+    border-color: rgba(112, 83, 126, 0.397);
+    border-width: 3px;
+    border-radius: 20px;
+    padding: 2px;
+    -moz-appearance: textfield;
+}
+
+/*--------Change Table Looks --------*/
+
+#tableContainer{
+    padding-top: 10px;
+}
+table{
+    text-align: center;
+    margin: auto;
+    padding: auto;
+    padding-top: 100px;
+}
+
+table, th, td{
+    border: 2px solid black;
+    padding: 20px;
+}
+a:link{
+    color:lightgray;
 }

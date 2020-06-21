@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>CMPT 276 Assignment 2</title>
+
+  <link rel="stylesheet" href="./stylesheets/a2styles.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" >
+
+</head>
+<body>
+    <header>
+            <div class="header-title ">
+              CMPT 276 Assignment 2 
+            </div>
+    </header>
+    <nav class="navbar sticky-top navbar-light nav-color">
+        <ul class="nav nav-pills nav-fill">
+            <li class="nav-item">
+                <a class="nav-link" href="/a2.html">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/editData" tabindex="-1" aria-disabled="true">Edit Database</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/viewTeam" tabindex="-1" aria-disabled="true">View Our Team!</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/database" tabindex="-1" aria-disabled="true">View Database</a>
+            </li>
+        </ul>
+    </nav>
+    <div class = "content">
+        <h1>Here is our Team in Rectangles!!!</h1>
+    </div>
+    
+    <div class = "content">
+        <h1 style="font-size:25px; ">Managers</h1>
+        <% var counter = -1; %> 
+        <% rows.forEach(function(r) { %>
+            
+            <% 
+                if (r.type.trim() == "manager") {%>
+
+            <% counter++;
+            if(counter % 5 == 0)
+            {%> 
+                <br>
+
+            <%}%>
+
+          
+            <div class="rectangles">
+                <i><%=r.fname%><%=r.lname%></i>
+                <svg width="200" height="200">
+                <rect  transform = "scaleY(-1)" x="0" width="<%=r.size%>" height="<%=r.height%>" style="fill:<%=r.colour%>;border:black;" />
+                </svg>
+            </div>
+           
+
+        <% }}); %>
+        <h1 style="font-size:25px; ">Employees</h1>
+        <% var counter = -1; %> 
+        <% rows.forEach(function(r) { %>
+            
+            <% 
+                if (r.type.trim() == "employee") {%>
+
+            <% counter++;
+            if(counter % 5 == 0)
+            {%> 
+                <br>
+
+            <%}%>
+
+          
+            <div class="rectangles">
+                <i><%=r.fname%><%=r.lname%></i>
+                <svg width="200" height="200">
+                <rect  transform = "scaleY(-1)" x="0" width="<%=r.size%>" height="<%=r.height%>" style="fill:<%=r.colour%>;border:black;" />
+                </svg>
+            </div>
+           
+
+        <% }}); %>
+        <h1 style="font-size:25px; ">Interns</h1>
+        <% var counter = -1; %> 
+        <% rows.forEach(function(r) { %>
+            
+            <% 
+                if (r.type.trim() == "intern") {%>
+
+            <% counter++;
+            if(counter % 5 == 0)
+            {%> 
+                <br>
+
+            <%}%>
+
+          
+            <div class="rectangles">
+                <i><%=r.fname%><%=r.lname%></i>
+                <svg width="200" height="200">
+                <rect  transform = "scaleY(-1)" x="0" width="<%=r.size%>" height="<%=r.height%>" style="fill:<%=r.colour%>;border:black;" />
+                </svg>
+            </div>
+           
+
+        <% }}); %>
+
+    </div>
+
+
+
+
+
+
+</body>
+</html>

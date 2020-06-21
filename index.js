@@ -42,7 +42,7 @@ app.get('/database', (req,res)=>{
   // var data = {results: [2,3,4,5,6]};
   // res.render('pages/db',data)
   // var data = {results: [2,3,4,5,6]};
-  var getUsersQuery = `SELECT * FROM Person`;
+  var getUsersQuery = `SELECT * FROM Person ORDER BY uid`;
   pool.query(getUsersQuery, (error, results) =>{
     if (error)
       res.end(error);
@@ -55,13 +55,24 @@ app.get('/database', (req,res)=>{
   
 })
 app.get('/editData',(req,res)=>{
-  var getPersonQuery = `SELECT * FROM Person`;
+  var getPersonQuery = `SELECT * FROM Person ORDER BY uid`;
   pool.query(getPersonQuery, (error, results) =>{
     if (error)
       res.end(error);
     
     var results = {'rows': results.rows}
     res.render('pages/editData',results)
+  })
+  
+})
+app.get('/viewTeam',(req,res)=>{
+
+  var getUsersQuery = `SELECT * FROM Person ORDER BY uid`;
+  pool.query(getUsersQuery, (error, results) =>{
+    if (error)
+      res.end(error);
+    var results = {'rows':results.rows}
+    res.render('pages/viewRectangles',results);
   })
   
 })
@@ -79,21 +90,23 @@ app.post('/deletePerson',(req,res)=>{
     else
      console.log("User Succesfully deleted");
   })
-  res.redirect('/editData');
+  res.render('pages/success');
 }
 
 )
+
+
 
 app.post('/updatePerson',(req,res)=>{
 
   var uid = req.body.id;
   var fname = req.body.fName;
   var lname = req.body.lName;
-  var weight = req.body.weight;
+  var size = req.body.size;
   var height = req.body.height;
   var colour = req.body.colour;
   var pet = req.body.pet;
-  var position = req.body.position;
+  var type = req.body.type;
   var age = req.body.age;
 
 
@@ -119,13 +132,13 @@ app.post('/updatePerson',(req,res)=>{
     } 
     )
   }
-  if(weight != "" && weight !== undefined)
+  if(size != "" && size !== undefined)
   {
-    var update = `UPDATE person SET weight=${weight} WHERE uid=${uid}`;
+    var update = `UPDATE person SET size=${size} WHERE uid=${uid}`;
     pool.query(update,(error,results) =>{
       if(error){
         res.end(error);
-        console.log("UPDATE ERROR for weight")
+        console.log("UPDATE ERROR for size")
       }
     } 
     )
@@ -175,13 +188,13 @@ app.post('/updatePerson',(req,res)=>{
     } 
     )
   }
-  if(position != "" && position !== undefined)
+  if(type != "" && type !== undefined)
   {
-    var update = `UPDATE person SET position='${position}' WHERE uid=${uid}`;
+    var update = `UPDATE person SET type='${type}' WHERE uid=${uid}`;
     pool.query(update,(error,results) =>{
       if(error){
         res.end(error);
-        console.log("UPDATE ERROR for Position")
+        console.log("UPDATE ERROR for type")
       }
     } 
     )
@@ -189,7 +202,7 @@ app.post('/updatePerson',(req,res)=>{
   
   
   
-  res.redirect('/editData');
+  res.render('pages/success');
 
 })
 
@@ -198,25 +211,30 @@ app.post('/addPerson',(req,res)=>{
   var uid = req.body.id;
   var fname = req.body.fName;
   var lname = req.body.lName;
-  var weight = req.body.weight;
+  var size = req.body.size;
   var height = req.body.height;
   var colour = req.body.colour;
   var pet = req.body.pet;
-  var position = req.body.position;
+  var type = req.body.type;
   var age = req.body.age;
+  var bool = false;
 
   var addPerson = `INSERT INTO Person VALUES (${uid},${age},'${fname}','${lname}',
-    ${height},${weight},'${colour}','${pet}','${position}')`;
+    ${height},${size},'${colour}','${pet}','${type}')`;
 
   pool.query(addPerson, (error,results)=>{
 
     if(error)
     {
       console.log("ERROR Adding someone");
+      bool = true
+      res.render('pages/failed');
     }
+    else{
+      res.render('pages/success');
+      }
   })
-  res.redirect('/editData');
-
+  
 }
 
 
