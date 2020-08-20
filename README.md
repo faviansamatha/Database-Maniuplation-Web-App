@@ -11,6 +11,7 @@
 
 
 <h1>WELCOME!!!</h1>
+<a href="https://fierce-anchorage-58845.herokuapp.com/">Click Here!</a> <br>
 <p>Welcome to the beta version of our employee management system. Please take a look around the website.
     Feel free to add, edit, or delete any of the users!<br>
 
